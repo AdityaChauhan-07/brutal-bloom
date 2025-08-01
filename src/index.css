@@ -556,6 +556,64 @@
     60% { transform: translate(2px, 2px); }
     80% { transform: translate(2px, -2px); }
   }
+
+  /* Brutalist Hamburger Menu Animations */
+  @keyframes brutal-slide-in {
+    0% { 
+      transform: translateX(-100%) skewX(-15deg); 
+      opacity: 0;
+    }
+    100% { 
+      transform: translateX(0) skewX(0deg); 
+      opacity: 1;
+    }
+  }
+
+  @keyframes brutal-slide-down {
+    0% { 
+      transform: translateY(-100%) rotate(-5deg); 
+      opacity: 0;
+    }
+    100% { 
+      transform: translateY(0) rotate(0deg); 
+      opacity: 1;
+    }
+  }
+
+  @keyframes brutal-scale-in {
+    0% { 
+      transform: scale(0) rotate(45deg); 
+      opacity: 0;
+    }
+    100% { 
+      transform: scale(1) rotate(0deg); 
+      opacity: 1;
+    }
+  }
+
+  @keyframes hamburger-shake {
+    0%, 100% { transform: translate(0, 0) rotate(0); }
+    25% { transform: translate(-2px, -2px) rotate(-1deg); }
+    50% { transform: translate(2px, -2px) rotate(1deg); }
+    75% { transform: translate(-2px, 2px) rotate(-1deg); }
+  }
+
+  /* Brutalist Menu Button Effects */
+  .brutal-hamburger:hover {
+    animation: hamburger-shake 0.6s ease-in-out;
+  }
+
+  .brutal-menu-panel-1 {
+    animation: brutal-slide-in 0.7s ease-out;
+  }
+
+  .brutal-menu-panel-2 {
+    animation: brutal-slide-down 0.5s ease-out 0.1s both;
+  }
+
+  .brutal-menu-panel-3 {
+    animation: brutal-scale-in 0.6s ease-out 0.2s both;
+  }
   
   @keyframes glitch-2 {
     0%, 100% { transform: translate(0); }
