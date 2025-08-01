@@ -58,50 +58,33 @@
     --transition-brutal: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --glitch-offset: 2px;
 
-    --radius: 0.5rem;
-
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
-
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
-
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
@@ -135,10 +118,18 @@
   .font-mono {
     font-family: 'JetBrains Mono', monospace;
   }
+
+  /* Optimized Images */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    user-select: none;
+    -webkit-user-drag: none;
+  }
 }
 
 @layer components {
-  /* Custom Cursor */
   /* Custom Cursor */
   .cursor-brutal {
     position: fixed;
@@ -150,10 +141,9 @@
     mix-blend-mode: difference;
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    /* Remove transition for position, only apply to size/background changes */
     transition: width var(--transition-brutal), height var(--transition-brutal), background var(--transition-brutal);
   }
-  
+
   .cursor-brutal.hover {
     width: 40px;
     height: 40px;
@@ -227,6 +217,333 @@
   .ripple:active::before {
     width: 300px;
     height: 300px;
+  }
+
+  /* Hover Target Cursor */
+  .hover-target {
+    cursor: pointer;
+  }
+
+  .hover-target img {
+    cursor: inherit;
+  }
+}
+
+/* BRUTAL GRID LAYOUT - Chaotic Brutalist Style */
+.brutal-grid {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-auto-rows: 160px;
+  gap: 2px;
+  margin-bottom: 40px;
+  transform: rotate(-0.5deg);
+  perspective: 1000px;
+}
+
+.brutal-grid-item {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: center;
+}
+
+.brutal-grid-item:hover {
+  transform: translateY(-8px) scale(1.02) rotate(0.5deg);
+  z-index: 15;
+  filter: drop-shadow(12px 12px 24px rgba(0, 0, 0, 0.4));
+}
+
+/* Grid Item Sizes - Chaotic Brutalist Layout */
+.large-portrait {
+  grid-column: span 5;
+  grid-row: span 6;
+  transform: rotate(-1.2deg);
+  margin: -25px -20px -15px -15px;
+  z-index: 3;
+}
+
+.small-landscape {
+  grid-column: span 7;
+  grid-row: span 3;
+  transform: rotate(0.8deg) skewX(-0.5deg) translateY(25px);
+  margin: -15px -25px -20px -10px;
+  z-index: 8;
+}
+
+.medium-square {
+  grid-column: span 4;
+  grid-row: span 4;
+  transform: rotate(1.5deg);
+  margin: -30px -15px -15px -30px;
+  z-index: 4;
+}
+
+.large-landscape {
+  grid-column: span 8;
+  grid-row: span 4;
+  transform: rotate(-0.3deg) skewY(0.2deg);
+  margin: -10px -35px -25px -15px;
+  z-index: 2;
+}
+
+.small-portrait {
+  grid-column: span 3;
+  grid-row: span 5;
+  transform: rotate(2.1deg);
+  margin: -35px -10px -10px -20px;
+  z-index: 5;
+}
+
+.medium-landscape {
+  grid-column: span 6;
+  grid-row: span 3;
+  transform: rotate(-1.8deg) skewX(0.3deg);
+  margin: -15px -20px -30px -10px;
+  z-index: 2;
+}
+
+/* Enhanced border styles for brutal look */
+.brutal-grid-item .border-4 {
+  border-style: solid;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.8);
+  transition: box-shadow 0.3s ease-out;
+}
+
+.brutal-grid-item:hover .border-4 {
+  box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.9);
+}
+
+/* SVG Splatter Mask Effect */
+.brutal-grid-item [style*="mask"] {
+  transition: opacity 0.15s ease-out;
+}
+
+/* SVG mask support */
+.brutal-grid-item svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Ensure crisp edges for splatter */
+.brutal-grid-item img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Brutalist Image Effects */
+.brutal-grid-item img {
+  filter: grayscale(100%) contrast(1.1);
+  transition: filter 0.3s ease-out;
+}
+
+/* Background should ALWAYS stay grayscale */
+.brutal-grid-item .floating-bg img {
+  filter: grayscale(100%) contrast(1.1) !important;
+}
+
+/* Yellow filter for hover state - brutalist theme */
+.yellow-filter {
+  filter: sepia(100%) saturate(300%) hue-rotate(25deg) brightness(1.1) contrast(1.2) !important;
+}
+
+
+
+
+
+
+
+/* Background is static when not hovered */
+.floating-bg {
+  position: relative;
+  transform-origin: center;
+  will-change: transform;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Wave distortion with zoom only on hover */
+.brutal-grid-item:hover .floating-bg {
+  animation: wave-flow 6s ease-in-out infinite;
+  transform: scale(1.08);
+}
+
+.floating-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    transparent 30%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 70%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  background-size: 300% 300%;
+  animation: gentle-shimmer 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+.floating-mask {
+  transition: all 0.3s ease-out;
+}
+
+
+
+/* Visible light shimmer that moves across */
+@keyframes gentle-shimmer {
+  0% {
+    background-position: -150% -150%;
+    opacity: 0.6;
+  }
+  50% {
+    background-position: 150% 150%;
+    opacity: 0.9;
+  }
+  100% {
+    background-position: -150% -150%;
+    opacity: 0.6;
+  }
+}
+
+/* Physical wave distortion with zoom - creates flowing wave effect through image */
+@keyframes wave-flow {
+  0% {
+    transform: scale(1.08) skewX(0deg) skewY(0deg);
+  }
+  12.5% {
+    transform: scale(1.08) skewX(0.8deg) skewY(-0.2deg);
+  }
+  25% {
+    transform: scale(1.08) skewX(1.2deg) skewY(0.4deg);
+  }
+  37.5% {
+    transform: scale(1.08) skewX(0.3deg) skewY(0.9deg);
+  }
+  50% {
+    transform: scale(1.08) skewX(-0.6deg) skewY(0.2deg);
+  }
+  62.5% {
+    transform: scale(1.08) skewX(-1.1deg) skewY(-0.7deg);
+  }  
+  75% {
+    transform: scale(1.08) skewX(-0.4deg) skewY(-1.0deg);
+  }
+  87.5% {
+    transform: scale(1.08) skewX(0.7deg) skewY(-0.3deg);
+  }
+  100% {
+    transform: scale(1.08) skewX(0deg) skewY(0deg);
+  }
+}
+
+
+
+/* Responsive brutal grid - Maintaining chaos */
+@media (max-width: 1024px) {
+  .brutal-grid {
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 130px;
+    gap: 1px;
+    transform: rotate(-0.3deg);
+  }
+  
+  .large-portrait {
+    grid-column: span 4;
+    grid-row: span 5;
+    transform: rotate(-0.8deg);
+    margin: -20px -15px -10px -10px;
+  }
+  
+  .small-landscape {
+    grid-column: span 6;
+    grid-row: span 3;
+    transform: rotate(0.5deg) skewX(-0.3deg) translateY(20px);
+    margin: -15px -20px -15px -10px;
+    z-index: 8;
+  }
+  
+  .medium-square {
+    grid-column: span 3;
+    grid-row: span 4;
+    transform: rotate(1.2deg);
+    margin: -25px -10px -10px -25px;
+  }
+  
+  .large-landscape {
+    grid-column: span 7;
+    grid-row: span 3;
+    transform: rotate(-0.2deg) skewY(0.1deg);
+    margin: -10px -25px -20px -10px;
+  }
+  
+  .small-portrait {
+    grid-column: span 3;
+    grid-row: span 4;
+    transform: rotate(1.5deg);
+    margin: -25px -5px -5px -15px;
+  }
+  
+  .medium-landscape {
+    grid-column: span 5;
+    grid-row: span 2;
+    transform: rotate(-1.2deg) skewX(0.2deg);
+    margin: -10px -15px -25px -10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .brutal-grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 90px;
+    gap: 1px;
+    transform: rotate(-0.2deg);
+  }
+  
+  .brutal-grid-item {
+    margin: -10px !important;
+  }
+  
+  .large-portrait {
+    grid-column: span 3 !important;
+    grid-row: span 4 !important;
+    transform: rotate(-0.5deg) !important;
+  }
+  
+  .large-landscape {
+    grid-column: span 4 !important;
+    grid-row: span 3 !important;
+    transform: rotate(0.3deg) !important;
+  }
+  
+  .medium-square {
+    grid-column: span 2 !important;
+    grid-row: span 3 !important;
+    transform: rotate(0.8deg) !important;
+  }
+  
+  .small-landscape {
+    grid-column: span 3 !important;
+    grid-row: span 2 !important;
+    transform: rotate(-0.6deg) translateY(15px) !important;
+    z-index: 8 !important;
+  }
+  
+  .medium-landscape {
+    grid-column: span 3 !important;
+    grid-row: span 2 !important;
+    transform: rotate(-0.6deg) !important;
+  }
+  
+  .small-portrait {
+    grid-column: span 2 !important;
+    grid-row: span 3 !important;
+    transform: rotate(1.1deg) !important;
   }
 }
 

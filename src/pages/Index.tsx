@@ -18,10 +18,11 @@ const Index = () => {
         {/* Hero Section */}
         <div className="text-center mb-20 pt-20">
           <h1 className="font-display text-8xl md:text-9xl font-black mb-8 text-glitch" data-text="BRUTAL BLOOM">
-            BRUTAL BLOOM
+            CLOUD. NINE.
           </h1>
           <p className="font-mono text-xl md:text-2xl uppercase tracking-wider text-muted-foreground max-w-3xl mx-auto">
-            A hackathon project exploring brutalist design through 10 interactive UI elements
+            Akhand Singh | Aditya Chauhan <br></br>
+            PixxelHack
           </p>
           <div className="mt-12">
             <div className="w-32 h-1 bg-primary mx-auto animate-pulse"></div>

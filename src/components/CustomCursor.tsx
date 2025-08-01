@@ -14,19 +14,19 @@ const CustomCursor = () => {
       }
     };
 
-    const handleMouseEnter = (e: Event) => {
-      const target = e.target as Node;
-      if (target instanceof Element && target.matches('a, button, .hover-target')) {
-        setIsHovering(true);
-      }
-    };
+const handleMouseEnter = (e: Event) => {
+  const target = e.target as Node;
+  if (target instanceof Element && target.matches('a, button, .hover-target')) {
+    setIsHovering(true);
+  }
+};
 
-    const handleMouseLeave = (e: Event) => {
-      const target = e.target as Node;
-      if (target instanceof Element && target.matches('a, button, .hover-target')) {
-        setIsHovering(false);
-      }
-    };
+const handleMouseLeave = (e: Event) => {
+  const target = e.target as Node;
+  if (target instanceof Element && target.matches('a, button, .hover-target')) {
+    setIsHovering(false);
+  }
+};
 
     document.addEventListener('mousemove', updatePosition);
     document.addEventListener('mouseenter', handleMouseEnter, true);
