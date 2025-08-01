@@ -22,7 +22,7 @@ const Index = () => {
           {/* Hero Section */}
           <div className="text-center mb-20 pt-20">
             <h1 className="font-display text-8xl md:text-9xl font-black mb-8 text-glitch animate-emerge-from-void" style={{ animationDelay: '0.5s' }}>
-              CLOUD 9
+              CLOUD. NINE.
             </h1>
             <p className="font-mono text-xl md:text-2xl uppercase tracking-wider text-muted-foreground max-w-3xl mx-auto animate-emerge-from-void" style={{ animationDelay: '0.8s' }}>
               A hackathon project exploring brutalist design through 10 interactive UI elements

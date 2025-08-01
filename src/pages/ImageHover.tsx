@@ -1,9 +1,15 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 
 const ImageHover = () => {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+  const [previousProject, setPreviousProject] = useState<string | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [animationTrigger, setAnimationTrigger] = useState(0);
+  const leaveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const previousHideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const currentElementRef = useRef<HTMLElement | null>(null);
+  const lastMouseEventRef = useRef<MouseEvent | null>(null);
+  const projectMousePositions = useRef<Record<string, { x: number; y: number }>>({});
 
   // Continuous animation loop
   useEffect(() => {
@@ -23,6 +29,43 @@ const ImageHover = () => {
       }
     };
   }, [hoveredProject]);
+
+  // Handle scroll events to update mouse position
+  useEffect(() => {
+    const handleScroll = () => {
+      if (hoveredProject && currentElementRef.current && lastMouseEventRef.current) {
+        const rect = currentElementRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: lastMouseEventRef.current.clientX - rect.left,
+          y: lastMouseEventRef.current.clientY - rect.top
+        });
+      }
+    };
+
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      lastMouseEventRef.current = e;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('mousemove', handleGlobalMouseMove, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleGlobalMouseMove);
+    };
+  }, [hoveredProject]);
+
+  // Cleanup timeouts on unmount
+  useEffect(() => {
+    return () => {
+      if (leaveTimeoutRef.current) {
+        clearTimeout(leaveTimeoutRef.current);
+      }
+      if (previousHideTimeoutRef.current) {
+        clearTimeout(previousHideTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const projects = [
     {
@@ -137,21 +180,63 @@ const ImageHover = () => {
   };
 
   const handleMouseMove = useCallback((e: React.MouseEvent, projectId: string) => {
+    // Store current element and mouse event
+    currentElementRef.current = e.currentTarget as HTMLElement;
+    lastMouseEventRef.current = e.nativeEvent;
+    
+    const rect = e.currentTarget.getBoundingClientRect();
+    const newPosition = {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    };
+    
+    // Store mouse position for this specific project
+    projectMousePositions.current[projectId] = newPosition;
+    
+    // Update global mouse position for currently hovered project
     if (hoveredProject === projectId) {
-      const rect = e.currentTarget.getBoundingClientRect();
-      setMousePosition({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
-      });
+      setMousePosition(newPosition);
     }
   }, [hoveredProject]);
 
   const handleMouseEnter = (projectId: string) => {
+    // Clear any pending leave timeout
+    if (leaveTimeoutRef.current) {
+      clearTimeout(leaveTimeoutRef.current);
+      leaveTimeoutRef.current = null;
+    }
+    
+    // If we're moving from one image to another, keep the previous visible briefly
+    if (hoveredProject && hoveredProject !== projectId) {
+      setPreviousProject(hoveredProject);
+      
+      // Clear any existing previous hide timeout
+      if (previousHideTimeoutRef.current) {
+        clearTimeout(previousHideTimeoutRef.current);
+      }
+      
+      // Hide the previous project's mask after a delay
+      previousHideTimeoutRef.current = setTimeout(() => {
+        setPreviousProject(null);
+      }, 300); // Keep previous visible for 300ms
+    }
+    
     setHoveredProject(projectId);
   };
 
   const handleMouseLeave = () => {
-    setHoveredProject(null);
+    // Add delay before hiding mask to prevent flicker when moving between images
+    leaveTimeoutRef.current = setTimeout(() => {
+      setHoveredProject(null);
+      setPreviousProject(null);
+      currentElementRef.current = null;
+      
+      // Clear previous hide timeout since we're leaving entirely
+      if (previousHideTimeoutRef.current) {
+        clearTimeout(previousHideTimeoutRef.current);
+        previousHideTimeoutRef.current = null;
+      }
+    }, 150); // 150ms delay
   };
 
   return (
@@ -193,8 +278,10 @@ const ImageHover = () => {
                   
                   {/* Hover Image with Animated SVG Splatter Mask - Always rendered for smooth transitions */}
                   {(() => {
-                    const splatterData = getSplatterSVG(mousePosition.x, mousePosition.y);
-                    const isHovered = hoveredProject === project.id;
+                    // Use stored mouse position for this project, fallback to global position
+                    const projectPos = projectMousePositions.current[project.id] || mousePosition;
+                    const splatterData = getSplatterSVG(projectPos.x, projectPos.y);
+                    const isHovered = hoveredProject === project.id || previousProject === project.id;
                     return (
                       <>
                         {/* SVG Mask Definition */}
@@ -219,10 +306,22 @@ const ImageHover = () => {
                             mask: `url(#splatter-mask-${project.id})`,
                             WebkitMask: `url(#splatter-mask-${project.id})`,
                             opacity: isHovered ? 1 : 0,
-                            transform: isHovered ? 'scale(1)' : 'scale(0.1)',
-                            transformOrigin: `${mousePosition.x}px ${mousePosition.y}px`,
-                            transition: 'opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                            transitionDelay: isHovered ? '0.1s' : '0s',
+                            transform: (() => {
+                              if (hoveredProject === project.id) return 'scale(1)';
+                              if (previousProject === project.id) return 'scale(1)'; // Keep previous at full scale
+                              return 'scale(0.1)';
+                            })(),
+                            transformOrigin: `${projectPos.x}px ${projectPos.y}px`,
+                            transition: (() => {
+                              if (hoveredProject === project.id) {
+                                return 'opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                              } else if (previousProject === project.id) {
+                                return 'opacity 0.3s ease-out'; // Previous project only fades out, no scale change
+                              } else {
+                                return 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                              }
+                            })(),
+                            transitionDelay: hoveredProject === project.id ? '0.1s' : '0s',
                           }}
                         >
                           <img 
