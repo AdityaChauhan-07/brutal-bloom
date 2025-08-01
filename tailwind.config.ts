@@ -24,6 +24,18 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				
+				/* Brutalist Color System */
+				paper: 'hsl(var(--paper))',
+				ink: 'hsl(var(--ink))',
+				'electric-yellow': 'hsl(var(--electric-yellow))',
+				'neon-pink': 'hsl(var(--neon-pink))',
+				'cyber-blue': 'hsl(var(--cyber-blue))',
+				'danger-red': 'hsl(var(--danger-red))',
+				concrete: 'hsl(var(--concrete))',
+				steel: 'hsl(var(--steel))',
+				ash: 'hsl(var(--ash))',
+				
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -51,17 +63,20 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
-				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			fontFamily: {
+				display: ['Playfair Display', 'serif'],
+				mono: ['JetBrains Mono', 'monospace'],
+			},
+			boxShadow: {
+				brutal: 'var(--shadow-brutal)',
+				neon: 'var(--shadow-neon)',
+			},
+			animation: {
+				marquee: 'marquee 20s linear infinite',
+				'glitch-1': 'glitch-1 0.3s infinite',
+				'glitch-2': 'glitch-2 0.3s infinite',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
