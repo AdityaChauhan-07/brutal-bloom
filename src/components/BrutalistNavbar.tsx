@@ -37,62 +37,62 @@ const BrutalistNavbar = () => {
 
   return (
     <>
-      {/* Enhanced Brutalist Hamburger Button */}
+      {/* Enhanced Brutalist Hamburger Button - Grey/Black/Yellow Theme */}
       <button
         onClick={toggleMenu}
-        className={`fixed top-6 right-6 z-50 w-16 h-16 bg-foreground border-4 border-background transition-all duration-300 hover-target group ${
-          isOpen ? 'bg-primary rotate-90 scale-110' : 'hover:bg-accent hover:rotate-3'
+        className={`fixed top-6 right-6 z-50 w-16 h-16 bg-primary border-4 border-foreground transition-all duration-300 hover-target group ${
+          isOpen ? 'bg-concrete rotate-90 scale-110 border-background' : 'hover:bg-foreground hover:rotate-3 hover:border-primary'
         } ${isAnimating ? 'animate-pulse' : ''}`}
         style={{ 
-          boxShadow: isOpen ? '12px 12px 0px rgba(0, 0, 0, 0.8)' : '8px 8px 0px rgba(0, 0, 0, 0.6)',
+          boxShadow: isOpen ? '12px 12px 0px hsl(var(--background) / 0.8)' : '8px 8px 0px hsl(var(--background) / 0.6)',
           clipPath: 'polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%)'
         }}
       >
         <div className="relative w-8 h-6 mx-auto">
           {/* Top Line */}
           <span 
-            className={`absolute left-0 w-full h-1 bg-background transition-all duration-500 ease-in-out ${
+            className={`absolute left-0 w-full h-1 transition-all duration-500 ease-in-out ${
               isOpen 
-                ? 'top-2.5 rotate-45 w-8 bg-foreground' 
-                : 'top-0 group-hover:w-6 group-hover:translate-x-1'
+                ? 'top-2.5 rotate-45 w-8 bg-background' 
+                : 'top-0 bg-background group-hover:w-6 group-hover:translate-x-1 group-hover:bg-primary'
             }`}
             style={{
               transformOrigin: 'center',
-              boxShadow: isOpen ? 'none' : '2px 2px 0px rgba(0, 0, 0, 0.4)'
+              boxShadow: isOpen ? 'none' : '1px 1px 0px hsl(var(--background) / 0.6)'
             }}
           />
           
           {/* Middle Line */}
           <span 
-            className={`absolute left-0 top-2.5 w-full h-1 bg-background transition-all duration-300 ${
+            className={`absolute left-0 top-2.5 w-full h-1 transition-all duration-300 ${
               isOpen 
-                ? 'opacity-0 scale-0 rotate-90' 
-                : 'group-hover:w-8 group-hover:-translate-x-1'
+                ? 'opacity-0 scale-0 rotate-90 bg-background' 
+                : 'bg-background group-hover:w-8 group-hover:-translate-x-1 group-hover:bg-primary'
             }`}
             style={{
-              boxShadow: isOpen ? 'none' : '2px 2px 0px rgba(0, 0, 0, 0.4)'
+              boxShadow: isOpen ? 'none' : '1px 1px 0px hsl(var(--background) / 0.6)'
             }}
           />
           
           {/* Bottom Line */}
           <span 
-            className={`absolute left-0 w-full h-1 bg-background transition-all duration-500 ease-in-out ${
+            className={`absolute left-0 w-full h-1 transition-all duration-500 ease-in-out ${
               isOpen 
-                ? 'top-2.5 -rotate-45 w-8 bg-foreground' 
-                : 'top-5 group-hover:w-4 group-hover:translate-x-2'
+                ? 'top-2.5 -rotate-45 w-8 bg-background' 
+                : 'top-5 bg-background group-hover:w-4 group-hover:translate-x-2 group-hover:bg-primary'
             }`}
             style={{
               transformOrigin: 'center',
-              boxShadow: isOpen ? 'none' : '2px 2px 0px rgba(0, 0, 0, 0.4)'
+              boxShadow: isOpen ? 'none' : '1px 1px 0px hsl(var(--background) / 0.6)'
             }}
           />
         </div>
         
-        {/* Brutalist Corner Details */}
-        <div className={`absolute -top-1 -right-1 w-3 h-3 bg-primary transition-all duration-300 ${
+        {/* Brutalist Corner Details - Grey/Yellow Theme */}
+        <div className={`absolute -top-1 -right-1 w-3 h-3 bg-steel transition-all duration-300 ${
           isOpen ? 'scale-0' : 'group-hover:scale-125'
         }`} />
-        <div className={`absolute -bottom-1 -left-1 w-2 h-2 bg-accent transition-all duration-300 ${
+        <div className={`absolute -bottom-1 -left-1 w-2 h-2 bg-concrete transition-all duration-300 ${
           isOpen ? 'scale-0' : 'group-hover:scale-150'
         }`} />
       </button>
@@ -103,40 +103,41 @@ const BrutalistNavbar = () => {
           isOpen ? 'pointer-events-auto' : 'pointer-events-none'
         }`}
       >
-        {/* Background Panels - Sliding from different directions */}
+        {/* Grey/Black/Yellow Background Panels - Clean but Brutal */}
         <div 
-          className={`absolute inset-0 bg-foreground transition-all duration-700 ease-in-out ${
-            isOpen ? 'translate-x-0' : '-translate-x-full'
+          className={`absolute inset-0 bg-background transition-all duration-700 ease-in-out ${
+            isOpen ? 'translate-x-0 opacity-95' : '-translate-x-full opacity-0'
           }`}
-          style={{ clipPath: 'polygon(0 0, 70% 0, 85% 100%, 0 100%)' }}
+          style={{ clipPath: 'polygon(0 0, 75% 0, 90% 100%, 0 100%)' }}
         />
         <div 
-          className={`absolute inset-0 bg-accent transition-all duration-500 delay-100 ease-in-out ${
-            isOpen ? 'translate-y-0' : '-translate-y-full'
+          className={`absolute inset-0 bg-primary transition-all duration-500 delay-100 ease-in-out ${
+            isOpen ? 'translate-y-0 opacity-90' : '-translate-y-full opacity-0'
           }`}
-          style={{ clipPath: 'polygon(70% 0, 100% 0, 100% 60%, 85% 100%)' }}
+          style={{ clipPath: 'polygon(75% 0, 100% 0, 100% 65%, 90% 100%)' }}
         />
         <div 
-          className={`absolute inset-0 bg-primary transition-all duration-600 delay-200 ease-in-out ${
-            isOpen ? 'scale-100' : 'scale-0'
+          className={`absolute inset-0 bg-concrete transition-all duration-600 delay-200 ease-in-out ${
+            isOpen ? 'scale-100 opacity-85' : 'scale-0 opacity-0'
           }`}
           style={{ 
-            clipPath: 'polygon(85% 100%, 100% 60%, 100% 100%)',
+            clipPath: 'polygon(90% 100%, 100% 65%, 100% 100%)',
             transformOrigin: 'bottom right'
           }}
         />
         
-        {/* Brutalist Grid Background Pattern */}
+        {/* Concrete Texture Pattern - Brutalist Industrial Feel */}
         <div 
-          className={`absolute inset-0 opacity-10 transition-opacity duration-1000 ${
-            isOpen ? 'opacity-20' : 'opacity-0'
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            isOpen ? 'opacity-10' : 'opacity-0'
           }`}
           style={{
             backgroundImage: `
-              linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.1) 76%, transparent 77%), 
-              linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.1) 76%, transparent 77%)
+              linear-gradient(45deg, transparent 35%, hsl(var(--foreground) / 0.05) 35.5%, hsl(var(--foreground) / 0.05) 36%, transparent 36.5%), 
+              linear-gradient(-45deg, transparent 35%, hsl(var(--foreground) / 0.05) 35.5%, hsl(var(--foreground) / 0.05) 36%, transparent 36.5%),
+              linear-gradient(0deg, transparent 48%, hsl(var(--foreground) / 0.03) 49%, hsl(var(--foreground) / 0.03) 51%, transparent 52%)
             `,
-            backgroundSize: '40px 40px'
+            backgroundSize: '20px 20px, 20px 20px, 100% 4px'
           }}
         />
 
@@ -150,18 +151,18 @@ const BrutalistNavbar = () => {
           }}
         >
           <nav className="text-center">
-            {/* Animated Title */}
+            {/* Clean but Brutal Title - Inspired by Agency Style */}
             <h2 
-              className={`font-display text-5xl md:text-8xl font-black mb-16 transition-all duration-800 ${
+              className={`font-display text-6xl md:text-9xl font-black mb-20 transition-all duration-800 ${
                 isOpen 
                   ? 'opacity-100 translate-y-0 rotate-0' 
                   : 'opacity-0 translate-y-20 rotate-12'
               }`}
               style={{
-                textShadow: isOpen ? '8px 8px 0px rgba(0, 0, 0, 0.3)' : 'none',
+                textShadow: isOpen ? '6px 6px 0px hsl(var(--primary))' : 'none',
                 filter: isOpen ? 'none' : 'blur(4px)',
-                color: 'var(--background)',
-                WebkitTextStroke: '2px var(--foreground)'
+                color: 'hsl(var(--foreground))',
+                letterSpacing: '-0.05em'
               }}
             >
               MENU
@@ -189,37 +190,43 @@ const BrutalistNavbar = () => {
                       hover-target transition-all duration-300 relative group overflow-hidden
                       ${location.pathname === route.path 
                         ? 'text-primary' 
-                        : 'text-background hover:text-accent'
+                        : 'text-foreground hover:text-background'
                       }
                     `}
                     style={{
-                      textShadow: '4px 4px 0px rgba(0, 0, 0, 0.5)',
-                      WebkitTextStroke: location.pathname === route.path ? '0' : '1px var(--foreground)'
+                      textShadow: location.pathname === route.path 
+                        ? '3px 3px 0px hsl(var(--background))' 
+                        : isOpen ? '3px 3px 0px hsl(var(--background) / 0.5)' : 'none',
+                      letterSpacing: '0.1em'
                     }}
                   >
-                    <span className="relative z-10">{route.name}</span>
-                    
-                    {/* Hover Background Effect */}
+                    {/* Grey/Yellow Hover Background Effect */}
                     <div 
-                      className={`absolute inset-0 bg-primary transform transition-transform duration-300 ${
+                      className={`absolute inset-0 bg-steel transform transition-transform duration-300 z-0 ${
                         location.pathname === route.path ? 'scale-100' : 'scale-x-0 group-hover:scale-x-100'
                       }`}
                       style={{ transformOrigin: 'left' }}
                     />
                     
-                    {/* Brutalist Corner Accent */}
-                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className="relative z-20 mix-blend-mode-normal">{route.name}</span>
+                    
+                    {/* Brutalist Corner Accents - Grey/Yellow Theme */}
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                    <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-concrete opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
                   </Link>
                 </li>
               ))}
             </ul>
             
-            {/* Close Instructions */}
+            {/* Clean Close Instructions */}
             <div 
-              className={`mt-20 text-background font-mono text-sm uppercase tracking-widest transition-all duration-1000 ${
-                isOpen ? 'opacity-60 translate-y-0' : 'opacity-0 translate-y-10'
+              className={`mt-24 text-foreground font-mono text-sm uppercase tracking-widest transition-all duration-1000 ${
+                isOpen ? 'opacity-40 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
-              style={{ transitionDelay: isOpen ? '1000ms' : '0ms' }}
+              style={{ 
+                transitionDelay: isOpen ? '1200ms' : '0ms',
+                letterSpacing: '0.3em'
+              }}
             >
               Click anywhere to close
             </div>
