@@ -139,6 +139,7 @@
 
 @layer components {
   /* Custom Cursor */
+  /* Custom Cursor */
   .cursor-brutal {
     position: fixed;
     width: 20px;
@@ -149,7 +150,8 @@
     mix-blend-mode: difference;
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    transition: var(--transition-brutal);
+    /* Remove transition for position, only apply to size/background changes */
+    transition: width var(--transition-brutal), height var(--transition-brutal), background var(--transition-brutal);
   }
   
   .cursor-brutal.hover {

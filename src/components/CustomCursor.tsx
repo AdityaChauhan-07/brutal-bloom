@@ -1,24 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 
 const CustomCursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const updatePosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      // Update position directly via DOM manipulation instead of state
+      // This avoids re-renders and is much more performant
+      if (cursorRef.current) {
+        cursorRef.current.style.left = `${e.clientX}px`;
+        cursorRef.current.style.top = `${e.clientY}px`;
+      }
     };
 
     const handleMouseEnter = (e: Event) => {
-      const target = e.target as HTMLElement;
-      if (target.matches('a, button, .hover-target')) {
+      const target = e.target as Node;
+      if (target instanceof Element && target.matches('a, button, .hover-target')) {
         setIsHovering(true);
       }
     };
 
     const handleMouseLeave = (e: Event) => {
-      const target = e.target as HTMLElement;
-      if (target.matches('a, button, .hover-target')) {
+      const target = e.target as Node;
+      if (target instanceof Element && target.matches('a, button, .hover-target')) {
         setIsHovering(false);
       }
     };
@@ -36,10 +41,11 @@ const CustomCursor = () => {
 
   return (
     <div
+      ref={cursorRef}
       className={`cursor-brutal ${isHovering ? 'hover' : ''}`}
       style={{
-        left: position.x,
-        top: position.y,
+        left: 0,
+        top: 0,
       }}
     />
   );
