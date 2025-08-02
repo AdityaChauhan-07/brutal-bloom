@@ -2,7 +2,7 @@
 
 A **brutalist web design showcase** featuring cutting-edge CSS animations, 3D effects, and interactive elements. Built with React, TypeScript, and pure CSS transforms.
 
-##HOME
+## HOME
 <img width="2878" height="1617" alt="image" src="https://github.com/user-attachments/assets/30b85403-3a1d-48c1-b77b-101335adfbdf" />
 
 ## MYSTERY
