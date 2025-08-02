@@ -1,73 +1,153 @@
-# Welcome to your Lovable project
+# 🏗️ BRUTAL BLOOM
 
-## Project info
+A **brutalist web design showcase** featuring cutting-edge CSS animations, 3D effects, and interactive elements. Built with React, TypeScript, and pure CSS transforms.
 
-**URL**: https://lovable.dev/projects/fd40ddc2-a491-443e-acb6-3f3e46065198
+## ✨ Features
 
-## How can I edit this code?
+### 🎨 Interactive Elements
+- **Custom Cursor**: Dynamic cursor with hover states and smooth animations
+- **Brutalist Navbar**: Animated hamburger menu with sliding panels
+- **Image Hover Effects**: SVG mask reveals with splatter animations
+- **3D Rubik's Cube**: Pure CSS 3D transforms with solving algorithms
+- **Scroll Text Animation**: Card-stacking letter reveals with synchronized backgrounds
+- **Team Section**: Interactive photo popups with responsive design
 
-There are several ways of editing your application.
+### 🏗️ Design Philosophy
+- **Raw Brutalism**: Concrete textures, bold typography, harsh edges
+- **High Contrast**: Electric yellow accents on dark backgrounds  
+- **Geometric Layouts**: Asymmetrical grids and overlapping elements
+- **Interactive Animations**: Smooth transitions with cubic-bezier easing
 
-**Use Lovable**
+## 🚀 Deployment
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/fd40ddc2-a491-443e-acb6-3f3e46065198) and start prompting.
+### Quick Deploy to Vercel
 
-Changes made via Lovable will be committed automatically to this repo.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/brutal-bloom)
 
-**Use your preferred IDE**
+### Manual Deployment
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. **Build the project**:
+   ```bash
+   npm run build
+   ```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2. **Preview locally**:
+   ```bash
+   npm run preview
+   ```
 
-Follow these steps:
+3. **Deploy to your platform**:
+   - Upload the `dist/` folder to your hosting provider
+   - Ensure proper routing for SPA (Single Page Application)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Environment Setup
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. **Start development server**:
+   ```bash
+   npm run dev
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+3. **Open in browser**:
+   ```
+   http://localhost:5173
+   ```
+
+## 🛠️ Tech Stack
+
+- **Framework**: React 18 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS + Custom CSS
+- **UI Components**: Radix UI + shadcn/ui
+- **Routing**: React Router DOM
+- **Animations**: Pure CSS transforms and keyframes
+- **3D Effects**: CSS `transform-style: preserve-3d`
+
+## 📁 Project Structure
+
+```
+brutal-bloom/
+├── src/
+│   ├── components/          # Reusable components
+│   │   ├── CustomCursor.tsx # Dynamic cursor implementation
+│   │   └── BrutalistNavbar.tsx # Animated navigation
+│   ├── pages/               # Page components
+│   │   ├── ImageHover.tsx   # SVG mask image effects
+│   │   ├── Mystery.tsx      # 3D Rubik's cube
+│   │   ├── ScrollText.tsx   # Card stacking animation
+│   │   └── Team.tsx         # Interactive team section
+│   ├── components/ui/       # shadcn/ui components
+│   └── lib/                 # Utility functions
+├── public/                  # Static assets
+└── dist/                    # Built files (generated)
 ```
 
-**Edit a file directly in GitHub**
+## 🎯 Performance Optimizations
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- **Lazy Loading**: Route-based code splitting
+- **CSS Optimization**: Tailwind purging and minification
+- **Image Optimization**: WebP support and lazy loading
+- **Security Headers**: CSP, CSRF protection via Vercel config
+- **Caching**: Static asset caching with proper headers
 
-**Use GitHub Codespaces**
+## 🔧 Development Commands
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+# Development
+npm run dev              # Start dev server
+npm run build           # Build for production
+npm run preview         # Preview production build
 
-## What technologies are used for this project?
+# Code Quality
+npm run lint            # Run ESLint
+npm run lint:fix        # Fix ESLint errors
 
-This project is built with:
+# Deployment
+npm run deploy          # Build and preview
+npm run clean           # Clean dist folder
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🎨 Customization
 
-## How can I deploy this project?
+### Color Scheme
+- **Primary**: Electric Yellow (`#FFFF00`)
+- **Background**: Dark (`#0A0A0A`)
+- **Concrete**: Medium Gray (`#666666`)
+- **Steel**: Light Gray (`#999999`)
 
-Simply open [Lovable](https://lovable.dev/projects/fd40ddc2-a491-443e-acb6-3f3e46065198) and click on Share -> Publish.
+### Typography
+- **Display**: Bold, geometric sans-serif
+- **Mono**: Monospace for technical elements
+- **Brutalist Shadows**: Multiple layered text shadows
 
-## Can I connect a custom domain to my Lovable project?
+### Animations
+- **Easing**: Custom cubic-bezier curves
+- **Duration**: 300ms-1200ms for different effects
+- **Performance**: Hardware-accelerated transforms
 
-Yes, you can!
+## 📱 Browser Support
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- **Modern Browsers**: Chrome 90+, Firefox 88+, Safari 14+
+- **3D Transforms**: Full support for CSS 3D effects
+- **Custom Properties**: CSS variables for theming
+- **ES Modules**: Native ESM support required
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-effect`
+3. Commit changes: `git commit -m 'Add amazing effect'`
+4. Push to branch: `git push origin feature/amazing-effect`
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+**Built with ⚡ by Brutal Bloom** | **Experience Raw Digital Architecture**
