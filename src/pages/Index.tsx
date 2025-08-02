@@ -24,7 +24,8 @@ const Index = () => {
               CLOUD. NINE.
             </h1>
             <p className="font-mono text-xl md:text-2xl uppercase tracking-wider text-muted-foreground max-w-3xl mx-auto animate-emerge-from-void" style={{ animationDelay: '0.8s' }}>
-              A hackathon project exploring brutalist design through 10 interactive UI elements
+              Akhand Singh | Aditya Chauhan <br />
+              PixxelHack
             </p>
             <div className="mt-12 animate-emerge-from-void" style={{ animationDelay: '1.1s' }}>
               <div className="w-32 h-1 bg-primary mx-auto animate-pulse"></div>
