@@ -870,3 +870,67 @@
 .cube-container:hover {
   filter: drop-shadow(0 0 20px hsl(var(--primary) / 0.4));
 }
+
+/* Scroll Snap Styles for Image Grid */
+.snap-y {
+  scroll-snap-type: y mandatory;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
+
+.snap-mandatory {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced Image Grid Styles */
+.image-grid-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.image-grid-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Image hover effects for brutalist style */
+.image-brutalist {
+  transition: var(--transition-brutal);
+  box-shadow: var(--shadow-brutal);
+}
+
+.image-brutalist:hover {
+  transform: scale(1.05) rotate(1deg);
+  box-shadow: var(--shadow-neon);
+  filter: brightness(1.1) contrast(1.1);
+}
+
+/* Color utility classes for the design system */
+.bg-cyber-blue {
+  background-color: hsl(var(--cyber-blue));
+}
+
+.text-cyber-blue {
+  color: hsl(var(--cyber-blue));
+}
+
+.bg-neon-pink {
+  background-color: hsl(var(--neon-pink));
+}
+
+.text-neon-pink {
+  color: hsl(var(--neon-pink));
+}
+
+.bg-danger-red {
+  background-color: hsl(var(--danger-red));
+}
+
+.text-danger-red {
+  color: hsl(var(--danger-red));
+}
