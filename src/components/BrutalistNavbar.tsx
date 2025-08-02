@@ -13,7 +13,6 @@ const BrutalistNavbar = () => {
     { path: '/image-grid', name: 'IMAGE GRID' },
     { path: '/marquee', name: 'MARQUEE' },
     { path: '/team', name: 'TEAM' },
-    { path: '/ripple', name: 'RIPPLE' },
     { path: '/scroll-text', name: 'SCROLL TEXT' },
     { path: '/mystery', name: 'MYSTERY' },
   ];

@@ -9,7 +9,6 @@ import ImageHover from "./pages/ImageHover";
 import ImageGrid from "./pages/ImageGrid";
 import Marquee from "./pages/Marquee";
 import Team from "./pages/Team";
-import Ripple from "./pages/Ripple";
 import ScrollText from "./pages/ScrollText";
 import Mystery from "./pages/Mystery";
 import NotFound from "./pages/NotFound";
@@ -33,7 +32,6 @@ const App = () => (
           <Route path="/image-grid" element={<ImageGrid />} />
           <Route path="/marquee" element={<Marquee />} />
           <Route path="/team" element={<Team />} />
-          <Route path="/ripple" element={<Ripple />} />
           <Route path="/scroll-text" element={<ScrollText />} />
           <Route path="/mystery" element={<Mystery />} />
           <Route path="*" element={<NotFound />} />

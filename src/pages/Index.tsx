@@ -7,7 +7,6 @@ const Index = () => {
     { path: '/image-grid', title: 'IMAGE GRID', desc: 'Cursor Animations' },
     { path: '/marquee', title: 'MARQUEE', desc: 'Infinite Scroll' },
     { path: '/team', title: 'TEAM', desc: 'Hover Reveals' },
-    { path: '/ripple', title: 'RIPPLE', desc: 'Click Effects' },
     { path: '/scroll-text', title: 'SCROLL TEXT', desc: 'Dynamic Scaling' },
     { path: '/mystery', title: 'MYSTERY', desc: 'Surprise Element' },
   ];
@@ -34,7 +33,8 @@ const Index = () => {
 
           {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, index) => (
+            {/* First Row - 4 items */}
+            {features.slice(0, 4).map((feature, index) => (
               <Link
                 key={feature.path}
                 to={feature.path}
@@ -49,6 +49,40 @@ const Index = () => {
                 </p>
               </Link>
             ))}
+            
+            {/* Second Row - 3 items centered */}
+            <div className="lg:col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:max-w-4xl lg:mx-auto">
+              {features.slice(4).map((feature, index) => (
+                <Link
+                  key={feature.path}
+                  to={feature.path}
+                  className={`block border-2 p-6 hover-lift hover-target cursor-none animate-emerge-from-void ${
+                    feature.title === 'MYSTERY' 
+                      ? 'border-primary bg-primary/10 shadow-lg shadow-primary/20 relative overflow-hidden' 
+                      : 'border-concrete bg-background'
+                  }`}
+                  style={{ animationDelay: `${1.4 + (index + 4) * 0.15}s` }}
+                >
+                  {feature.title === 'MYSTERY' && (
+                    <>
+                      {/* Special highlight effects for mystery button */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent pointer-events-none" />
+                      <div className="absolute top-2 right-2 w-3 h-3 bg-primary rounded-full animate-pulse" />
+                    </>
+                  )}
+                  <h3 className={`font-mono text-lg font-bold uppercase tracking-wider mb-2 relative z-10 ${
+                    feature.title === 'MYSTERY' ? 'text-primary' : ''
+                  }`}>
+                    {feature.title}
+                  </h3>
+                  <p className={`font-mono text-sm relative z-10 ${
+                    feature.title === 'MYSTERY' ? 'text-primary/80' : 'text-muted-foreground'
+                  }`}>
+                    {feature.desc}
+                  </p>
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Footer */}

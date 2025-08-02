@@ -786,72 +786,72 @@ const Mystery: React.FC = () => {
         style={{ zIndex: 1 }}
       />
 
-      {/* Control Panel */}
-      <div className="fixed bottom-8 left-8 z-20 space-y-4">
-        <div className="bg-background/90 backdrop-blur-sm p-6 border-2 border-primary">
-          <h3 className="text-lg font-black text-primary mb-4">SYSTEM CONTROLS</h3>
-          
-          <div className="space-y-3">
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                onClick={() => setIsAnimating(!isAnimating)}
-                className={`px-3 py-2 font-bold border-2 transition-all text-sm ${
-                  isAnimating 
-                    ? 'bg-primary text-background border-primary' 
-                    : 'bg-background text-primary border-primary hover:bg-primary hover:text-background'
-                }`}
-              >
-                {isAnimating ? 'PAUSE' : 'PLAY'}
-              </button>
-              
-              <button
-                onClick={() => setShowOrbits(!showOrbits)}
-                className={`px-3 py-2 font-bold border-2 transition-all text-sm ${
-                  showOrbits 
-                    ? 'bg-concrete text-background border-concrete' 
-                    : 'bg-background text-concrete border-concrete hover:bg-concrete hover:text-background'
-                }`}
-              >
-                ORBITS
-              </button>
-              
-              <button
-                onClick={() => setShowMeteors(!showMeteors)}
-                className={`px-3 py-2 font-bold border-2 transition-all text-sm col-span-2 ${
-                  showMeteors 
-                    ? 'bg-steel text-background border-steel' 
-                    : 'bg-background text-steel border-steel hover:bg-steel hover:text-background'
-                }`}
-              >
-                METEORS
-              </button>
-          </div>
+             {/* Control Panel */}
+       <div className="fixed bottom-8 left-8 z-20 space-y-4">
+         <div className="bg-background/90 backdrop-blur-sm p-6 border-2 border-primary">
+           <h3 className="text-lg font-black text-primary mb-4">SYSTEM CONTROLS</h3>
+           
+           <div className="space-y-3">
+             <div className="grid grid-cols-2 gap-2">
+               <button
+                 onClick={() => setIsAnimating(!isAnimating)}
+                 className={`px-3 py-2 font-bold border-2 transition-all text-sm ${
+                   isAnimating 
+                     ? 'bg-primary text-background border-primary' 
+                     : 'bg-background text-primary border-primary hover:bg-primary hover:text-background'
+                 }`}
+               >
+                 {isAnimating ? 'PAUSE' : 'PLAY'}
+               </button>
+               
+               <button
+                 onClick={() => setShowOrbits(!showOrbits)}
+                 className={`px-3 py-2 font-bold border-2 transition-all text-sm ${
+                   showOrbits 
+                     ? 'bg-concrete text-background border-concrete' 
+                     : 'bg-background text-concrete border-concrete hover:bg-concrete hover:text-background'
+                 }`}
+               >
+                 ORBITS
+               </button>
+               
+               <button
+                 onClick={() => setShowMeteors(!showMeteors)}
+                 className={`px-3 py-2 font-bold border-2 transition-all text-sm col-span-2 ${
+                   showMeteors 
+                     ? 'bg-steel text-background border-steel' 
+                     : 'bg-background text-steel border-steel hover:bg-steel hover:text-background'
+                 }`}
+               >
+                 METEORS
+               </button>
+           </div>
 
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-bold text-steel">SPEED:</span>
-              <input
-                type="range"
-                min="0.1"
-                max="5"
-                step="0.1"
-                value={animationSpeed}
-                onChange={(e) => setAnimationSpeed(Number(e.target.value))}
-                className="flex-1"
-              />
-              <span className="text-sm font-bold text-primary w-8">{animationSpeed.toFixed(1)}</span>
-      </div>
+             <div className="flex items-center gap-2">
+               <span className="text-sm font-bold text-steel">SPEED:</span>
+               <input
+                 type="range"
+                 min="0.1"
+                 max="5"
+                 step="0.1"
+                 value={animationSpeed}
+                 onChange={(e) => setAnimationSpeed(Number(e.target.value))}
+                 className="flex-1"
+               />
+               <span className="text-sm font-bold text-primary w-8">{animationSpeed.toFixed(1)}</span>
+       </div>
 
-            <button
-              onClick={resetCamera}
-              className="w-full px-4 py-2 font-bold border-2 border-steel text-steel hover:bg-steel hover:text-background transition-all"
-            >
-              RESET VIEW
-            </button>
-          </div>
-        </div>
+             <button
+               onClick={resetCamera}
+               className="w-full px-4 py-2 font-bold border-2 border-steel text-steel hover:bg-steel hover:text-background transition-all"
+             >
+               RESET VIEW
+             </button>
+           </div>
+         </div>
 
 
-      </div>
+       </div>
 
       {/* Planet Selection */}
       <div className="fixed top-8 right-8 z-20">
