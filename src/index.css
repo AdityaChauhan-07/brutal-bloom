@@ -687,3 +687,104 @@
     16px 16px 0px hsl(var(--concrete)),
     24px 24px 32px rgba(0, 0, 0, 0.3);
 }
+
+/* ===== SCROLL TEXT ANIMATIONS ===== */
+
+/* Letter Enter Animation */
+@keyframes letter-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8) rotate(-5deg);
+    filter: blur(8px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-5px) scale(1.05) rotate(1deg);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+    filter: blur(0px);
+  }
+}
+
+/* Letter Exit Animation */
+@keyframes letter-exit {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translateY(10px) scale(0.9) rotate(-2deg);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.7) rotate(-8deg);
+    filter: blur(8px);
+  }
+}
+
+.animate-letter-enter {
+  animation: letter-enter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-letter-exit {
+  animation: letter-exit 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Smooth Text Stacking */
+.text-stack-smooth {
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Enhanced Letter Stacking with Bounce */
+@keyframes letter-stack-in {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.6) rotate(-10deg);
+    filter: blur(10px) brightness(0.5);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(-10px) scale(1.1) rotate(2deg);
+    filter: blur(1px) brightness(1.2);
+  }
+  80% {
+    transform: translateY(5px) scale(0.95) rotate(-1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+    filter: blur(0px) brightness(1);
+  }
+}
+
+@keyframes letter-stack-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+    filter: blur(0px) brightness(1);
+  }
+  30% {
+    opacity: 0.6;
+    transform: translateY(-5px) scale(0.95) rotate(1deg);
+    filter: blur(2px) brightness(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.5) rotate(-15deg);
+    filter: blur(12px) brightness(0.3);
+  }
+}
+
+.animate-stack-in {
+  animation: letter-stack-in 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animate-stack-out {
+  animation: letter-stack-out 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+}
