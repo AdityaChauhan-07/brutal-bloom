@@ -6,8 +6,16 @@ const BrutalistNavbar = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const location = useLocation();
 
+  // Hide menu button on loader page
+  const shouldHideMenu = location.pathname === '/loader';
+  
+  // Adjust positioning for pages with scrollbars (like image-grid)
+  // Using 30px (right-7.5 equivalent) to account for scrollbar width more precisely
+  const hasScrollbar = location.pathname === '/image-grid';
+  const rightPositionStyle = hasScrollbar ? { right: '30px' } : { right: '24px' };
+
   const routes = [
-    { path: '/', name: 'HOME' },
+    { path: '/home', name: 'HOME' },
     { path: '/loader', name: 'LOADER' },
     { path: '/image-hover', name: 'IMAGE HOVER' },
     { path: '/image-grid', name: 'IMAGE GRID' },
@@ -37,16 +45,18 @@ const BrutalistNavbar = () => {
   return (
     <>
       {/* Enhanced Brutalist Hamburger Button - Grey/Black/Yellow Theme */}
-      <button
-        onClick={toggleMenu}
-        className={`fixed top-6 right-6 z-50 w-16 h-16 bg-primary border-4 border-foreground transition-all duration-300 hover-target group ${
-          isOpen ? 'bg-concrete rotate-90 scale-110 border-background' : 'hover:bg-foreground hover:rotate-3 hover:border-primary'
-        } ${isAnimating ? 'animate-pulse' : ''}`}
-        style={{ 
-          boxShadow: isOpen ? '12px 12px 0px hsl(var(--background) / 0.8)' : '8px 8px 0px hsl(var(--background) / 0.6)',
-          clipPath: 'polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%)'
-        }}
-      >
+      {!shouldHideMenu && (
+        <button
+          onClick={toggleMenu}
+          className={`fixed top-6 z-50 w-16 h-16 bg-primary border-4 border-foreground transition-all duration-300 hover-target group ${
+            isOpen ? 'bg-concrete rotate-90 scale-110 border-background' : 'hover:bg-foreground hover:rotate-3 hover:border-primary'
+          } ${isAnimating ? 'animate-pulse' : ''}`}
+          style={{ 
+            ...rightPositionStyle,
+            boxShadow: isOpen ? '12px 12px 0px hsl(var(--background) / 0.8)' : '8px 8px 0px hsl(var(--background) / 0.6)',
+            clipPath: 'polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%)'
+          }}
+        >
         <div className="relative w-8 h-6 mx-auto">
           {/* Top Line */}
           <span 
@@ -95,6 +105,7 @@ const BrutalistNavbar = () => {
           isOpen ? 'scale-0' : 'group-hover:scale-150'
         }`} />
       </button>
+      )}
 
       {/* Brutalist Menu Overlay with Sliding Animation */}
       <div 

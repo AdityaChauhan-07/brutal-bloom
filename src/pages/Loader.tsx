@@ -27,7 +27,7 @@ const Loader = () => {
         // Navigate to home page after morphing animation
         setTimeout(() => {
           console.log('Navigating to home');
-          navigate('/');
+          navigate('/home');
         }, 2000); // 1.5 seconds for morphing
       }, 800); // 800ms delay to ensure text is completely gone (500ms transition + 300ms buffer)
     }, 3000);
