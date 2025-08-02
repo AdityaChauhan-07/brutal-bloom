@@ -644,6 +644,16 @@
     opacity: 1;
   }
   
+  /* Morphing Animation Enhancements */
+  .animate-morphing {
+    font-smooth: always;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
   /* Hover States */
   .hover-lift {
     transition: var(--transition-brutal);
